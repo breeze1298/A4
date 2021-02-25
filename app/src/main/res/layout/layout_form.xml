@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/border_style"
+    android:paddingLeft="10dp"
+    android:paddingRight="5dp"
+    android:paddingTop="5dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="2dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="@string/name"
+            android:fontFamily="sans-serif-black">
+        </TextView>
+
+        <TextView
+            android:layout_marginLeft="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:id="@+id/fName">
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="2dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="@string/email"
+            android:fontFamily="sans-serif-black">
+        </TextView>
+
+        <TextView
+            android:layout_marginLeft="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:id="@+id/fEmail">
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="2dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="@string/mobile"
+            android:fontFamily="sans-serif-black">
+        </TextView>
+
+        <TextView
+            android:layout_marginLeft="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:id="@+id/fMobile">
+        </TextView>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="2dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="@string/address"
+            android:fontFamily="sans-serif-black">
+        </TextView>
+
+        <TextView
+            android:layout_marginLeft="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textSize="25sp"
+            android:id="@+id/fAddress">
+        </TextView>
+
+    </RelativeLayout>
+
+</LinearLayout>
