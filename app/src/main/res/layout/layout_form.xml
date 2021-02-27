@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
     card_view:cardCornerRadius="10dp"
-    card_view:cardElevation="5dp"
+    card_view:cardElevation="10dp"
     card_view:cardUseCompatPadding="true">
 
     <LinearLayout
@@ -106,6 +106,34 @@
         </TextView>
 
     </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="fill_horizontal">
 
+
+        <ImageView
+            android:layout_marginStart="30dp"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/ic_edit"
+            android:id="@+id/editDetails"/>
+
+        <ImageView
+            android:layout_alignParentEnd="true"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/ic_delete"
+            android:id="@+id/deleteDetails"/>
+
+        </RelativeLayout>
     </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
 </androidx.cardview.widget.CardView>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
 
 import androidx.annotation.Nullable;
 
@@ -83,17 +84,20 @@ public class Sqlite  extends SQLiteOpenHelper {
     }
 
 
-    void insertFormDetails(String s1, String s2, String s3, String s4) {
+    void updateForm(FormModel formModel)
+    {
+        ContentValues values=new ContentValues();
+        values.put(NAME,formModel.getName());
+        values.put(EMAIL,formModel.getEmail());
+        values.put(MOBILE,formModel.getMobile());
+        values.put(ADDRESS,formModel.getAddress());
+        SQLiteDatabase db=this.getWritableDatabase();
 
+        db.update(TABLE_FORM,values, EMAIL+"= ?",new String[]{String.valueOf(formModel.getEmail())});
+    }
+
+    void deleteForm(String email) {
         SQLiteDatabase db = this.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(NAME,s1);
-        values.put(EMAIL,s2);
-        values.put(MOBILE,s3);
-        values.put(ADDRESS,s4);
-        db.insert(TABLE_FORM,null,values);
-
-
+        db.delete(TABLE_FORM, EMAIL + " = ?", new String[]{String.valueOf(email)});
     }
 }

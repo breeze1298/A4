@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -27,6 +28,7 @@ public class FormDetails extends AppCompatActivity {
     private Sqlite sqlite;
     String s1,s2,s3,s4;
     private String ePattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
 
 
     @Override
@@ -125,6 +127,7 @@ public class FormDetails extends AppCompatActivity {
                 }else if (s3.length()==10)
                 {
                     error=false;
+
                     FormModel formModel = new FormModel(s1, s2, s3, s4);
                     sqlite.insertFormDetails(formModel);
 
