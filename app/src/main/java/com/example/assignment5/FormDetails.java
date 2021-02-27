@@ -72,40 +72,59 @@ public class FormDetails extends AppCompatActivity {
         EditText email = subView.findViewById(R.id.etEmail);
         EditText mobile = subView.findViewById(R.id.etMobile);
         EditText address = subView.findViewById(R.id.etAddress);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Details");
         builder.setView(subView);
-        builder.setPositiveButton("ADD Details", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Add Details", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(FormDetails.this, "Task cancelled", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                Boolean error=false;
 
                 s1 = name.getText().toString();
                 s2 = email.getText().toString();
                 s3 = mobile.getText().toString();
                 s4 = address.getText().toString();
 
-                FormModel formModel = new FormModel(s1, s2, s3, s4);
-                sqlite.insertFormDetails(formModel);
+                error=true;
 
-                Toast.makeText(FormDetails.this, "Data Saved Successfully", Toast.LENGTH_SHORT).show();
-                finish();
-                startActivity(getIntent());
-
-
-                //Logic for Implementing in Dialog Fragment
-                /*if (s1.isEmpty())
+                //Validating all the inputs
+                if (s1.isEmpty())
                 {
+                    error=true;
                     name.setError("Name Field Cannot be Empty");
                 }
                 else if (!s2.matches(ePattern))
                 {
+                    error=true;
                     email.setError("Invalid Email Id");
                 }
                 else if (s4.isEmpty())
                 {
+                    error=true;
                     address.setError("Address Field Cannot be Empty ");
                 }else if (s3.length()==10)
                 {
+                    error=false;
                     FormModel formModel = new FormModel(s1, s2, s3, s4);
                     sqlite.insertFormDetails(formModel);
 
@@ -114,18 +133,17 @@ public class FormDetails extends AppCompatActivity {
                     startActivity(getIntent());
                 }
                 else {
+                    error=true;
                     mobile.setError("Invalid Mobile Number");
-                }*/
+                }
+                if (!error)
+                {
+                    alertDialog.dismiss();
+                }
+
 
             }
         });
-        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(FormDetails.this, "Task cancelled", Toast.LENGTH_LONG).show();
-            }
-        });
-        builder.show();
 
 
     }
