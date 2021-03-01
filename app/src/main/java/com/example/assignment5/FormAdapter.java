@@ -70,35 +70,6 @@ public class FormAdapter extends RecyclerView.Adapter<FormViewHolder> {
             }
         });
 
-      /*  holder.saveDetails.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                try
-                {
-                    JSONObject jsonAdd = new JSONObject();
-                    jsonAdd.put("name", s1);
-                    jsonAdd.put("email", s2);
-                    jsonAdd.put("mobile", s3);
-                    jsonAdd.put("address", s4);
-
-                    JSONObject jsonObj = new JSONObject();
-                    jsonObj.put("Details", jsonAdd);
-
-                    String details = jsonObj.toString();
-                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("details.txt", Context.MODE_PRIVATE));
-                    outputStreamWriter.append(details);
-                    outputStreamWriter.close();
-
-                } catch (JSONException | IOException ex) {
-                    ex.printStackTrace();
-                }
-
-
-            }
-        });*/
-
-
     }
 
 
@@ -200,6 +171,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormViewHolder> {
 
 
 }
+
 }
 
 

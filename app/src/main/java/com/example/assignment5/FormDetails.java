@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class FormDetails extends AppCompatActivity {
@@ -74,6 +77,7 @@ public class FormDetails extends AppCompatActivity {
         EditText email = subView.findViewById(R.id.etEmail);
         EditText mobile = subView.findViewById(R.id.etMobile);
         EditText address = subView.findViewById(R.id.etAddress);
+        CheckBox saveDetails=subView.findViewById(R.id.saveDetails);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Details");
@@ -131,6 +135,28 @@ public class FormDetails extends AppCompatActivity {
                     FormModel formModel = new FormModel(s1, s2, s3, s4);
                     sqlite.insertFormDetails(formModel);
 
+                    if (saveDetails.isChecked())
+                    {
+                        try {
+                            JSONObject jsonAdd = new JSONObject();
+                            jsonAdd.put("name", name.getText().toString());
+                            jsonAdd.put("email", email.getText().toString());
+                            jsonAdd.put("mobile",mobile.getText().toString());
+                            jsonAdd.put("address", address.getText().toString());
+
+                            JSONObject jsonObj = new JSONObject();
+                            jsonObj.put("Details", jsonAdd);
+
+                            String details = jsonObj.toString();
+                            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("details.txt", Context.MODE_PRIVATE));
+                            outputStreamWriter.append(details);
+                            outputStreamWriter.close();
+
+                        } catch (JSONException | IOException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+
                     Toast.makeText(FormDetails.this, "Data Saved Successfully", Toast.LENGTH_SHORT).show();
                     finish();
                     startActivity(getIntent());
@@ -147,6 +173,8 @@ public class FormDetails extends AppCompatActivity {
 
             }
         });
+
+
 
 
     }
